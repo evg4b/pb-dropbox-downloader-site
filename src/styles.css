@@ -1,0 +1,19 @@
+.authorize-variant {
+    margin: 4em;
+}
+
+.block-center {
+    margin: 0 auto !important;
+}
+
+.configuration-form {
+    margin: 2em 5em !important;
+}
+
+.configuration-form .footer {
+ text-align: center;
+}
+
+#root {
+    background: #e0e0e0;
+}
