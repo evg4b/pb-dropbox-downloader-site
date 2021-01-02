@@ -3,8 +3,8 @@ import React, { useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Dimmer, Loader } from 'semantic-ui-react';
 import useAccessTokenInfo from '../hooks/useAccessTokenInfo';
-import ConfigurationContext from '../steps/ConfigurationContext';
-import { routes, fields } from '../contacts';
+import { ConfigurationContext } from '../context';
+import { routes, fields } from '../constants';
 
 const Callback = () => {
   const info = useAccessTokenInfo();

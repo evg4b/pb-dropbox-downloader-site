@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Grid, Header, Segment } from 'semantic-ui-react';
-import { Configuration, Authorize, Download, Callback } from './pages';
-import ConfigurationProvider from './steps/ConfigurationProvider';
-import StepsView from './steps/StepsView';
-import { routes } from './contacts';
+import { Configuration, Authorize, Download, Callback } from './components';
+import { ConfigurationProvider } from './context';
+import StepsView from './components/StepsView';
+import { routes } from './constants';
 
 const App = () => (
   <BrowserRouter>

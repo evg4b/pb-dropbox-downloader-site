@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Button, Divider, Grid, Icon, Input } from 'semantic-ui-react';
-import { routes, dropbox, fields } from '../contacts';
-import ConfigurationContext from '../steps/ConfigurationContext';
+import { routes, dropbox, fields } from '../constants';
+import { ConfigurationContext } from '../context';
 
 const Authorize = () => {
   const [customToken, setCustomToken] = useState('');

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRouteMatch } from 'react-router-dom';
 import { Icon, Step } from 'semantic-ui-react';
-import { routes } from '../contacts';
+import { routes } from '../constants';
 
 const StepsView = () => {
   const authorize = !!useRouteMatch({ path: routes.authorize, exact: true });

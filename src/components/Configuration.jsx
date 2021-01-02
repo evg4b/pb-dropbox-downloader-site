@@ -2,8 +2,8 @@ import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Button, Form } from 'semantic-ui-react';
 import useRedirectIfNotAuthorized from '../hooks/useRedirectIfNotAuthorized';
-import ConfigurationContext from '../steps/ConfigurationContext';
-import { fields, routes } from '../contacts';
+import { ConfigurationContext } from '../context';
+import { fields, routes } from '../constants';
 
 const Configuration = () => {
   const { getField, updateField } = useContext(ConfigurationContext);

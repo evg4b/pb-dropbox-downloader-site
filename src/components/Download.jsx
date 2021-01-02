@@ -1,9 +1,9 @@
 import React, { useContext, useMemo } from 'react';
 import { Button, Grid, Header, Icon, Segment } from 'semantic-ui-react';
 import download from 'downloadjs';
-import ConfigurationContext from '../steps/ConfigurationContext';
+import { ConfigurationContext } from '../context';
 import useRedirectIfNotAuthorized from '../hooks/useRedirectIfNotAuthorized';
-import { spacer } from '../contacts';
+import { spacer } from '../constants';
 
 const Download = () => {
   useRedirectIfNotAuthorized();
