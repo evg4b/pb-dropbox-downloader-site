@@ -7,8 +7,6 @@ const StepsView = () => {
   const configure = !!useRouteMatch('/configuration');
   const download = !!useRouteMatch('/download');
 
-  console.log(authorize, configure, download);
-
   return (
     <Step.Group>
       <Step active={authorize} completed={configure || download}>

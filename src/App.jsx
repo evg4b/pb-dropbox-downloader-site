@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 // eslint-disable-next-line object-curly-newline
 import { Grid, Header, Segment } from 'semantic-ui-react';
 import { Configuration, Authorize, Download } from './pages';
+import ConfigurationProvider from './steps/ConfigurationProvider';
 import StepsView from './steps/StepsView';
 
 const App = () => (
@@ -13,12 +14,14 @@ const App = () => (
           PocketBook Dropbox Downloader
         </Header>
         <Segment compact className="block-center">
-          <StepsView />
-          <Switch>
-            <Route path="/download" component={Download} />
-            <Route path="/configuration" component={Configuration} />
-            <Route path="/" component={Authorize} />
-          </Switch>
+          <ConfigurationProvider>
+            <StepsView />
+            <Switch>
+              <Route path="/download" component={Download} />
+              <Route path="/configuration" component={Configuration} />
+              <Route path="/" component={Authorize} />
+            </Switch>
+          </ConfigurationProvider>
         </Segment>
       </Grid.Column>
     </Grid>

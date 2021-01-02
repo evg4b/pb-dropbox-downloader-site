@@ -1,37 +1,45 @@
 /* eslint-disable object-curly-newline */
 /* eslint-disable dot-notation */
-import React, { useEffect } from 'react';
+import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Button, Form } from 'semantic-ui-react';
-import { useAccessTokenInfo } from '../hooks';
+import useRedirectIfNotAuthorized from '../hooks/useRedirectIfNotAuthorized';
+import ConfigurationContext from '../steps/ConfigurationContext';
 
 const Configuration = () => {
-  const info = useAccessTokenInfo();
+  const { getField, updateField } = useContext(ConfigurationContext);
   const history = useHistory();
+  useRedirectIfNotAuthorized();
 
-  useEffect(() => {
-    if (info['access_token']) {
-      history.push('/');
-    }
-  }, [info]);
+  const handler = (field) => (_, target) => updateField(field, target.value || target.checked);
 
   return (
     <Form
       className="configuration-form"
-      onSubmit={(event) => {
-        const data = new FormData(event.target);
-        const value = Object.fromEntries(data.entries());
-        // eslint-disable-next-line no-console
-        console.log({ value });
-        event.preventDefault();
-        return false;
-      }}
+      onSubmit={(event) => event.preventDefault()}
     >
-      <Form.Input label="Folder" placeholder="Folder" icon="folder" iconPosition="left" />
-      <Form.Checkbox label="Save on SD card" />
-      <Form.Checkbox label="Delete files from reader" />
+      <Form.Input
+        label="Folder"
+        placeholder="Folder"
+        icon="folder"
+        iconPosition="left"
+        onChange={handler('folder')}
+        value={getField('folder')}
+      />
+      <Form.Checkbox
+        label="Save on SD card"
+        onChange={handler('on_sd_card')}
+        checked={getField('on_sd_card')}
+      />
+      <Form.Checkbox
+        label="Delete files from reader"
+        onChange={handler('allow_delete_files')}
+        checked={getField('allow_delete_files')}
+      />
       <div className="footer">
-        <Button type="submit" color="black">Submit configuration</Button>
+        <Button color="black" onClick={() => history.push('/download')}>
+          Submit configuration
+        </Button>
       </div>
     </Form>
   );
