@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-// eslint-disable-next-line object-curly-newline
 import { Grid, Header, Segment } from 'semantic-ui-react';
-import { Configuration, Authorize, Download } from './pages';
+import { Configuration, Authorize, Download, Callback } from './pages';
 import ConfigurationProvider from './steps/ConfigurationProvider';
 import StepsView from './steps/StepsView';
+import { routes } from './contacts';
 
 const App = () => (
   <BrowserRouter>
@@ -17,9 +17,10 @@ const App = () => (
           <ConfigurationProvider>
             <StepsView />
             <Switch>
-              <Route path="/download" component={Download} />
-              <Route path="/configuration" component={Configuration} />
-              <Route path="/" component={Authorize} />
+              <Route path={routes.callback} component={Callback} />
+              <Route path={routes.download} component={Download} />
+              <Route path={routes.configuration} component={Configuration} />
+              <Route path={routes.authorize} component={Authorize} />
             </Switch>
           </ConfigurationProvider>
         </Segment>

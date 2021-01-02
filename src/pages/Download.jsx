@@ -3,19 +3,20 @@ import { Button, Grid, Header, Icon, Segment } from 'semantic-ui-react';
 import download from 'downloadjs';
 import ConfigurationContext from '../steps/ConfigurationContext';
 import useRedirectIfNotAuthorized from '../hooks/useRedirectIfNotAuthorized';
+import { spacer } from '../contacts';
 
 const Download = () => {
-  const { configuration } = useContext(ConfigurationContext);
-
   useRedirectIfNotAuthorized();
 
+  const { configuration } = useContext(ConfigurationContext);
+
   const viewFileContent = useMemo(
-    () => JSON.stringify({ ...configuration, access_token: '*****' }, null, '    '),
+    () => JSON.stringify({ ...configuration, access_token: '*****' }, null, spacer),
     [configuration],
   );
 
   const downloadConfig = () => {
-    download(JSON.stringify(configuration, null, '    '), 'pb-dropbox-downloader-config.json', 'text/json');
+    download(JSON.stringify(configuration, null, spacer), 'pb-dropbox-downloader-config.json', 'text/json');
   };
 
   return (

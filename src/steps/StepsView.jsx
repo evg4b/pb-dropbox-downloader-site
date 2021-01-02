@@ -1,11 +1,12 @@
 import React from 'react';
 import { useRouteMatch } from 'react-router-dom';
 import { Icon, Step } from 'semantic-ui-react';
+import { routes } from '../contacts';
 
 const StepsView = () => {
-  const authorize = !!useRouteMatch({ path: '/', exact: true });
-  const configure = !!useRouteMatch('/configuration');
-  const download = !!useRouteMatch('/download');
+  const authorize = !!useRouteMatch({ path: routes.authorize, exact: true });
+  const configure = !!useRouteMatch(routes.configuration);
+  const download = !!useRouteMatch(routes.download);
 
   return (
     <Step.Group>

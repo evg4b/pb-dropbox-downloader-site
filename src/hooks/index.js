@@ -1,4 +1,4 @@
-/* eslint-disable import/prefer-default-export */
-import useAccessTokenInfo from './useAccessToken';
+import useAccessTokenInfo from './useAccessTokenInfo';
+import useRedirectIfNotAuthorized from './useRedirectIfNotAuthorized';
 
-export { useAccessTokenInfo };
+export { useAccessTokenInfo, useRedirectIfNotAuthorized };

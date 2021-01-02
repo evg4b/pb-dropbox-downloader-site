@@ -6,7 +6,7 @@ const ConfigurationProvider = ({ children }) => {
   const [configuration, setConfiguration] = useState({
     access_token: '',
     folder: './dropbox',
-    allow_delete_files: true,
+    allow_delete_files: false,
     on_sd_card: false,
   });
 

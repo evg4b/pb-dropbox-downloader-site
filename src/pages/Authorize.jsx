@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Button, Divider, Grid, Icon, Input } from 'semantic-ui-react';
+import { routes, dropbox, fields } from '../contacts';
 import ConfigurationContext from '../steps/ConfigurationContext';
 
 const Authorize = () => {
@@ -9,8 +10,8 @@ const Authorize = () => {
   const history = useHistory();
 
   const submitHandler = () => {
-    updateField('access_token', customToken);
-    history.push('/configuration');
+    updateField(fields.accessToken, customToken);
+    history.push(routes.configuration);
   };
 
   const changeHandler = (_, { value }) => setCustomToken(value);
@@ -20,7 +21,7 @@ const Authorize = () => {
       <Grid.Column>
         <div className="authorize-variant">
           <p>Automatically authorize application</p>
-          <Button as="a" color="blue" href="http://google.com">
+          <Button as="a" color="blue" href={dropbox('http://localhost:3000/callback')}>
             <Icon name="dropbox" /> Authorize
           </Button>
         </div>

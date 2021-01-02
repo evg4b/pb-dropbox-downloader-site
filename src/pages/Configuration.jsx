@@ -1,10 +1,9 @@
-/* eslint-disable object-curly-newline */
-/* eslint-disable dot-notation */
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Button, Form } from 'semantic-ui-react';
 import useRedirectIfNotAuthorized from '../hooks/useRedirectIfNotAuthorized';
 import ConfigurationContext from '../steps/ConfigurationContext';
+import { fields, routes } from '../contacts';
 
 const Configuration = () => {
   const { getField, updateField } = useContext(ConfigurationContext);
@@ -23,21 +22,21 @@ const Configuration = () => {
         placeholder="Folder"
         icon="folder"
         iconPosition="left"
-        onChange={handler('folder')}
-        value={getField('folder')}
+        onChange={handler(fields.folder)}
+        value={getField(fields.folder)}
       />
       <Form.Checkbox
         label="Save on SD card"
-        onChange={handler('on_sd_card')}
-        checked={getField('on_sd_card')}
+        onChange={handler(fields.onSdCard)}
+        checked={getField(fields.onSdCard)}
       />
       <Form.Checkbox
         label="Delete files from reader"
-        onChange={handler('allow_delete_files')}
-        checked={getField('allow_delete_files')}
+        onChange={handler(fields.allowDeleteFiles)}
+        checked={getField(fields.allowDeleteFiles)}
       />
       <div className="footer">
-        <Button color="black" onClick={() => history.push('/download')}>
+        <Button color="black" onClick={() => history.push(routes.download)}>
           Submit configuration
         </Button>
       </div>
