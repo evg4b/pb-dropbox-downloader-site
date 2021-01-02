@@ -1,4 +1,4 @@
-# PocketBook Dropbox Downloader site
+# PocketBook Dropbox Downloader site [![Netlify Status](https://api.netlify.com/api/v1/badges/590ae168-b579-4be4-be27-ee2dd1107b3d/deploy-status)](https://app.netlify.com/sites/pb-dropbox-downloader/deploys)
 
 This is site for automatically generate configuration for [pb-dropbox-downloader](https://github.com/evg4b/pb-dropbox-downloader) application.
 
