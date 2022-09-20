@@ -2,17 +2,20 @@ import { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { ConfigurationContext } from '../context';
 import { routes, fields } from '../constants';
+import useRedirectIfNotAuthorized from './useRedirectIfNotAuthorized';
 
-const useRedirectIfNotAuthorized = () => {
+const useRedirectIfNotProvided = () => {
+  useRedirectIfNotAuthorized();
+
   const { getField } = useContext(ConfigurationContext);
-  const codeVerifier = getField(fields.code_verifier);
+  const code = getField(fields.code);
   const history = useHistory();
 
   useEffect(() => {
-    if (!(codeVerifier || '').trim()) {
-      history.replace(routes.authorize);
+    if (!(code || '').trim()) {
+      history.replace(routes.provide);
     }
-  }, [codeVerifier]);
+  }, [code]);
 };
 
-export default useRedirectIfNotAuthorized;
+export default useRedirectIfNotProvided;

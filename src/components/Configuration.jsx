@@ -1,14 +1,15 @@
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Button, Form } from 'semantic-ui-react';
-import useRedirectIfNotAuthorized from '../hooks/useRedirectIfNotAuthorized';
 import { ConfigurationContext } from '../context';
 import { fields, routes } from '../constants';
+import { useRedirectIfNotProvided } from '../hooks';
 
 const Configuration = () => {
+  useRedirectIfNotProvided();
+
   const { getField, updateField } = useContext(ConfigurationContext);
   const history = useHistory();
-  useRedirectIfNotAuthorized();
 
   const handler = (field) => (_, target) => updateField(field, target.value || target.checked);
 
