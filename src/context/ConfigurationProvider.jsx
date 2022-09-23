@@ -4,8 +4,9 @@ import ConfigurationContext from './ConfigurationContext';
 // eslint-disable-next-line react/prop-types
 const ConfigurationProvider = ({ children }) => {
   const [configuration, setConfiguration] = useState({
-    access_token: '',
-    folder: './dropbox',
+    code: '',
+    code_verifier: '',
+    folder: 'dropbox',
     allow_delete_files: false,
     on_sd_card: false,
   });

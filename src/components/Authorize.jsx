@@ -1,43 +1,30 @@
-import React, { useContext, useState } from 'react';
+import React, { useCallback, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Button, Divider, Grid, Icon, Input } from 'semantic-ui-react';
+import { Button, Grid, Icon } from 'semantic-ui-react';
+import pkceChallenge from 'pkce-challenge';
 import { routes, dropbox, fields } from '../constants';
 import { ConfigurationContext } from '../context';
 
 const Authorize = () => {
-  const [customToken, setCustomToken] = useState('');
   const { updateField } = useContext(ConfigurationContext);
   const history = useHistory();
 
-  const submitHandler = () => {
-    updateField(fields.accessToken, customToken);
-    history.push(routes.configuration);
-  };
+  const openDropbox = useCallback(() => {
+    const chalange = pkceChallenge(128);
 
-  const changeHandler = (_, { value }) => setCustomToken(value);
+    updateField(fields.code_verifier, chalange.code_verifier);
+    window.open(dropbox(chalange.code_challenge), 'newwindow', 'width=700,height=500');
+    history.push(routes.provide);
+  });
 
   return (
     <Grid textAlign="center" verticalAlign="middle">
       <Grid.Column>
         <div className="authorize-variant">
           <p>Automatically authorize application</p>
-          <Button as="a" color="blue" href={dropbox('http://localhost:3000/callback')}>
+          <Button as="a" color="blue" target="_blank" onClick={openDropbox}>
             <Icon name="dropbox" /> Authorize
           </Button>
-        </div>
-        <Divider horizontal>Or</Divider>
-        <div className="authorize-variant">
-          <p>Provide your access token from your app</p>
-          <Input
-            fluid
-            placeholder="Your access token..."
-            action={{
-              content: 'Submit',
-              onClick: submitHandler,
-            }}
-            value={customToken}
-            onChange={changeHandler}
-          />
         </div>
       </Grid.Column>
     </Grid>

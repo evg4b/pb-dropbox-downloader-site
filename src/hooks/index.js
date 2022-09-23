@@ -1,4 +1,4 @@
-import useAccessTokenInfo from './useAccessTokenInfo';
 import useRedirectIfNotAuthorized from './useRedirectIfNotAuthorized';
+import useRedirectIfNotProvided from './useRedirectIfNotProvided';
 
-export { useAccessTokenInfo, useRedirectIfNotAuthorized };
+export { useRedirectIfNotAuthorized, useRedirectIfNotProvided };

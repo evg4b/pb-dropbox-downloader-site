@@ -2,16 +2,16 @@ import React, { useContext, useMemo } from 'react';
 import { Button, Grid, Header, Icon, Segment } from 'semantic-ui-react';
 import download from 'downloadjs';
 import { ConfigurationContext } from '../context';
-import useRedirectIfNotAuthorized from '../hooks/useRedirectIfNotAuthorized';
 import { spacer } from '../constants';
+import { useRedirectIfNotProvided } from '../hooks';
 
 const Download = () => {
-  useRedirectIfNotAuthorized();
+  useRedirectIfNotProvided();
 
   const { configuration } = useContext(ConfigurationContext);
 
   const viewFileContent = useMemo(
-    () => JSON.stringify({ ...configuration, access_token: '*****' }, null, spacer),
+    () => JSON.stringify({ ...configuration, code: '*****', code_verifier: '*****' }, null, spacer),
     [configuration],
   );
 

@@ -18,6 +18,13 @@ const StepsView = () => {
         </Step.Content>
       </Step>
       <Step active={configure} completed={download}>
+        <Icon name="key" />
+        <Step.Content>
+          <Step.Title>Provide code</Step.Title>
+          <Step.Description>Provide your dropbox code</Step.Description>
+        </Step.Content>
+      </Step>
+      <Step active={configure} completed={download}>
         <Icon name="setting" />
         <Step.Content>
           <Step.Title>Configure</Step.Title>
